@@ -1,0 +1,94 @@
+---
+const commitments = [
+  'Premium quality rice with consistent grading',
+  'Hygienic processing and modern milling technology',
+  'Customized packaging solutions',
+  'Competitive pricing with reliable supply',
+  'Strong focus on export standard',
+];
+---
+
+<section class="w-full py-24 bg-beige" id="about">
+  <div class="max-w-[1440px] mx-auto px-6 md:px-16">
+
+    <!-- ── Two-column: Who We Are + Our Commitment ─────────────── -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 mb-16 lg:mb-20">
+
+      <!-- Left: Who We Are -->
+      <div class="max-w-[615px]">
+        <p class="font-inter font-medium text-[14px] md:text-[16px] leading-[28px] tracking-[0.2em] text-primary uppercase mb-4">
+          WHO WE ARE
+        </p>
+        <h2 class="font-montserrat font-bold text-[48px] md:text-[64px] leading-none text-secondary mb-8">
+          About Us
+        </h2>
+        <div class="space-y-6 font-montserrat font-medium text-[17px] md:text-[20px] leading-[170%] text-secondary">
+          <p>
+            At Diyan Rice Mill Industry, we are committed to delivering premium-quality rice with purity,
+            consistency, and excellence. With deep roots in the Indian rice industry, we specialize in
+            sourcing, milling, processing, and supplying high-grade Basmati and Non-Basmati rice to
+            domestic and international markets.
+          </p>
+          <p>
+            Our mill combines traditional expertise with modern processing technology to ensure every
+            grain meets the highest standards of quality. From paddy selection to final packaging, we
+            maintain strict quality control at every stage.
+          </p>
+          <p>
+            Our advanced milling infrastructure enables us to deliver rice that is rich in aroma,
+            perfect in length, and superior in taste. We proudly serve wholesalers, distributors,
+            retailers, and exporters with customized packaging solutions and bulk supply options.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right: Our Commitment -->
+      <div class="max-w-[480px]">
+        <p class="font-inter font-medium text-[14px] md:text-[16px] leading-[28px] tracking-[0.2em] text-primary uppercase mb-4">
+          WHY US
+        </p>
+        <h2 class="font-montserrat font-bold text-[40px] md:text-[54px] leading-none text-secondary mb-8">
+          Our<br />Commitment
+        </h2>
+        <ul class="space-y-5">
+          {commitments.map((item) => (
+            <li class="flex items-start gap-3 font-inter text-[17px] md:text-[20px] leading-[170%] text-secondary">
+              <span class="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-primary flex items-center justify-center">
+                <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+              </span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- ── Large rice image ─────────────────────────────────────── -->
+    <div
+      class="
+        w-full max-w-[1237px] mx-auto
+        h-[260px] md:h-[473px]
+        border-[12px] border-white
+        shadow-[-1px_30px_48px_rgba(0,0,0,0.09)]
+        rounded-[14px] overflow-hidden
+      "
+    >
+      <img
+        src="/assets/rectanglerice.png"
+        alt="Rice Processing Facility"
+        class="w-full h-full object-cover"
+      />
+    </div>
+
+    <!-- ── Moul quote ───────────────────────────────────────────── -->
+    <div class="mt-14 md:mt-16 px-4">
+      <p class="font-moul text-[20px] md:text-[32px] leading-relaxed text-center text-primary capitalize max-w-[1064px] mx-auto">
+        At Diyan Rice Mill Industry, we believe that quality is not just a product — it is our promise.
+      </p>
+    </div>
+
+  </div>
+</section>

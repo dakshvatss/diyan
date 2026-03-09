@@ -1,0 +1,103 @@
+---
+const testimonials = [
+  {
+    name: 'Lorem Ipsum Has',
+    text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
+    bg: 'bg-primary',
+    titleColor: 'text-black',
+    textColor: 'text-white',
+    width: 'md:w-[545px]',
+  },
+  {
+    name: 'Lorem Ipsum Has',
+    text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
+    bg: 'bg-secondary',
+    titleColor: 'text-white',
+    textColor: 'text-white',
+    width: 'md:w-[545px]',
+  },
+  {
+    name: 'Lorem Ipsum',
+    text: 'Lorem ipsum — Lorem Ipsum is simply been the industry\'s standard dummy text ever since the 1500s.',
+    bg: 'bg-primary',
+    titleColor: 'text-black',
+    textColor: 'text-black',
+    width: 'md:w-[310px]',
+  },
+];
+---
+
+<section class="w-full py-20 md:py-24 bg-white">
+  <div class="max-w-[1440px] mx-auto px-6 md:px-16">
+
+    <!-- Heading -->
+    <h2 class="font-montserrat font-semibold text-[26px] md:text-[42px] leading-snug md:leading-[52px] text-center text-black mb-14 max-w-[976px] mx-auto">
+      What our clients say about Diyan Rice Mill Industry
+    </h2>
+
+    <!-- ── Desktop: side-by-side cards ──────────────────────────────── -->
+    <div class="hidden md:flex justify-center items-start gap-8 mb-10">
+      {testimonials.map((t) => (
+        <div class={`flex-shrink-0 ${t.width}`}>
+          <!-- Avatar -->
+          <div class="w-[140px] h-[140px] mx-auto mb-6 bg-gray-100 rounded-full shadow-md overflow-hidden flex items-center justify-center">
+            <img
+              src="/assets/logo.png"
+              alt={t.name}
+              class="w-[110px] h-[110px] object-contain"
+            />
+          </div>
+          <!-- Card -->
+          <div class={`${t.bg} rounded-[18px] p-8 h-[383px] flex flex-col justify-between`}>
+            <div>
+              <h3 class={`font-montserrat font-bold text-[22px] leading-[30px] ${t.titleColor} mb-4`}>
+                {t.name}
+              </h3>
+              <p class={`font-montserrat text-[15px] leading-[26px] ${t.textColor}`}>
+                {t.text}
+              </p>
+            </div>
+            <!-- Stars -->
+            <div class="flex gap-1 mt-4">
+              {[1,2,3,4,5].map(() => (
+                <span class="text-gold text-2xl leading-none">★</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- ── Mobile: vertical stack ──────────────────────────────────── -->
+    <div class="md:hidden flex flex-col gap-10 mb-10">
+      {testimonials.slice(0, 2).map((t) => (
+        <div>
+          <div class="w-[120px] h-[120px] mx-auto mb-6 bg-gray-100 rounded-full shadow-md overflow-hidden flex items-center justify-center">
+            <img src="/assets/logo.png" alt={t.name} class="w-[90px] h-[90px] object-contain" />
+          </div>
+          <div class={`${t.bg} rounded-[18px] p-7`}>
+            <h3 class={`font-montserrat font-bold text-[20px] leading-snug ${t.titleColor} mb-3`}>
+              {t.name}
+            </h3>
+            <p class={`font-montserrat text-[15px] leading-[26px] ${t.textColor} mb-5`}>
+              {t.text}
+            </p>
+            <div class="flex gap-1">
+              {[1,2,3,4,5].map(() => (
+                <span class="text-gold text-xl leading-none">★</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Pagination dots -->
+    <div class="flex justify-center gap-5">
+      <div class="w-[13px] h-[13px] bg-secondary rounded-full"></div>
+      <div class="w-[13px] h-[13px] bg-black/40 rounded-full"></div>
+      <div class="w-[13px] h-[13px] bg-black/40 rounded-full"></div>
+    </div>
+
+  </div>
+</section>

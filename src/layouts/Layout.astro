@@ -1,0 +1,57 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Diyan Rice Mill Industry',
+  description = 'Premium exporter of Basmati rice. Delivering superior quality rice through advanced milling and strict quality control.',
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/png" href="/assets/logo.png" />
+    <title>{title}</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Moul&family=Darker+Grotesque:wght@700;800&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-white overflow-x-hidden">
+    <slot />
+
+    <!-- Smooth scroll + mobile menu -->
+    <script>
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const href = (this as HTMLAnchorElement).getAttribute('href');
+          if (!href) return;
+          const target = document.querySelector(href);
+          target?.scrollIntoView({ behavior: 'smooth' });
+          // Close mobile menu if open
+          const menu = document.getElementById('mobile-menu');
+          menu?.classList.add('hidden');
+        });
+      });
+
+      // Mobile menu toggle
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      btn?.addEventListener('click', () => {
+        menu?.classList.toggle('hidden');
+      });
+    </script>
+  </body>
+</html>

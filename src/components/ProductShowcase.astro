@@ -1,0 +1,121 @@
+---
+const packages = [
+  // 25% of card width (224px) = 56px pushed right via translateX
+  { img: '/assets/rice_0.png', alt: 'Diyan Sella Basmati — Purple pack', offset: 'translate-x-[56px]' },
+  { img: '/assets/rice_1.png', alt: 'Diyan Sella Basmati — Blue pack',   offset: '' },
+  { img: '/assets/rice_2.png', alt: 'Diyan Sella Basmati — Red pack',    offset: '' },
+];
+---
+
+<!-- ── DESKTOP layout ──────────────────────────────────────────────── -->
+<section class="hidden md:block w-full bg-white" style="padding-top: 80px; padding-bottom: 560px;">
+  <div class="max-w-[1440px] mx-auto px-16">
+
+    <!-- Section heading -->
+    <h2 class="font-darker font-extrabold text-[84px] leading-[1] text-black mb-10 pl-[73px]">
+      Our<br />Products
+    </h2>
+
+    <!--
+      Outer wrapper: position:relative so the floating product image
+      can break out above the green box without affecting page flow.
+      We add top padding equal to the upward protrusion (≈290px)
+      so the section doesn't overlap the section above.
+    -->
+    <div class="relative" style="margin-top: 290px;">
+
+      <!-- Green rounded box -->
+      <div class="relative w-[1308px] mx-auto h-[425px] bg-primary rounded-[55px] overflow-visible">
+
+        <!-- "About the product" label (top-left of green box) -->
+        <div class="absolute left-[126px] top-[49px]">
+          <p class="font-montserrat font-bold text-[36px] leading-[52px] text-white">
+            About the<br />product
+          </p>
+        </div>
+
+        <!--
+          Hero product image — floats ABOVE the green box.
+          Positioned relative to the green box:
+            left: 656px  (from left edge of green box)
+            bottom: top of box + 290px extra headroom → use top: calc(-829px + 425px) ?
+          Actually we position from bottom of the box's top edge:
+          The image is 829px tall, box is 425px tall.
+          We want the bottom of the image ~80px above the bottom of the box,
+          so top = -(829 - 425 + 80) = -484px from top of box.
+          Figma says top: 6047px for image vs 6586px for box → delta = -539px
+        -->
+        <div
+          class="absolute z-20 w-[501px] h-[829px] pointer-events-none"
+          style="left: 703px; top: -539px;"
+        >
+          <img
+            src="/assets/rice_0.png"
+            alt="Diyan Sella Basmati Rice"
+            class="w-full h-full object-contain drop-shadow-2xl"
+          />
+        </div>
+
+        <!-- Three small package cards (bottom-left of green box) -->
+        <div class="absolute bottom-[20px] left-[126px] flex gap-6 items-end">
+          {packages.map((pkg) => (
+            <div
+              class={`
+                w-[224px] h-[271px] bg-white rounded-[18px]
+                shadow-[0px_4px_10px_4px_rgba(104,104,104,0.25)]
+                p-3 flex items-center justify-center
+                ${pkg.offset}
+              `}
+            >
+              <img src={pkg.img} alt={pkg.alt} class="h-[226px] object-contain" />
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MOBILE layout ──────────────────────────────────────────────── -->
+<section class="md:hidden w-full bg-white py-16 px-6">
+  <div class="max-w-[600px] mx-auto">
+
+    <h2 class="font-darker font-extrabold text-[48px] leading-tight text-black mb-10">
+      Our<br />Products
+    </h2>
+
+    <!-- Green card -->
+    <div class="bg-primary rounded-[30px] p-8">
+      <p class="font-montserrat font-bold text-[26px] leading-[1.4] text-white mb-8">
+        About the product
+      </p>
+
+      <!-- Hero image centred -->
+      <div class="flex justify-center mb-8">
+        <img
+          src="/assets/rice_0.png"
+          alt="Diyan Sella Basmati Rice"
+          class="h-[300px] object-contain drop-shadow-xl"
+        />
+      </div>
+
+      <!-- Package thumbnails -->
+      <div class="grid grid-cols-3 gap-3">
+        {packages.map((pkg) => (
+          <div
+            class="
+              bg-white rounded-[14px]
+              shadow-[0px_4px_10px_2px_rgba(104,104,104,0.25)]
+              p-2 flex items-center justify-center
+              aspect-square
+            "
+          >
+            <img src={pkg.img} alt={pkg.alt} class="h-full object-contain" />
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
