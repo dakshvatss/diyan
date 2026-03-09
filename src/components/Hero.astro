@@ -1,7 +1,7 @@
 ---
 ---
 
-<section class="relative h-[749px] mt-[80px] md:mt-[100px] overflow-hidden" id="home">
+<section class="relative h-[749px] mt-0 md:mt-0 overflow-visible" id="home">
 
   <!-- Background Image — full bleed -->
   <div class="absolute inset-0 w-full h-full">
@@ -12,6 +12,11 @@
     />
     <!-- subtle dark overlay for readability on small screens -->
     <div class="absolute inset-0 bg-black/20 md:bg-transparent"></div>
+  </div>
+
+  <!-- Floating logo overlay (adjusted so half sits above the hero) -->
+  <div class="hidden md:block absolute left-[61px] -top-[72px] md:left-[80px] md:-top-[80px] w-[288px] h-[288px] z-[9999] pointer-events-none" style="transform: translateY(20%);">
+    <img src="/assets/logo.png" alt="Diyan Rice Mill Industry" class="w-full h-full object-contain drop-shadow-2xl" />
   </div>
 
   <!-- Content: centred on mobile, right-positioned on desktop -->
@@ -38,7 +43,10 @@
       <h1
         class="font-montserrat font-semibold text-[28px] md:text-[42px] leading-tight md:leading-[51px] tracking-[2px] md:tracking-[3px] text-white"
       >
-        Premium Exporter of<br />Basmati Rice
+        Premium Exporter of<br />
+        <span class="inline-block text-[74px] font-bold leading-[65px] text-[#FFFEFE]">
+          Basmati Rice
+        </span>
       </h1>
 
       <!-- Body copy -->
