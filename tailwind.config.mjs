@@ -16,6 +16,8 @@ export default {
         moul: ['Moul', 'serif'],
         darker: ['Darker Grotesque', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
+        roboto: ['Roboto', 'sans-serif'],
       },
       screens: {
         sm: '640px',

@@ -1,0 +1,166 @@
+---
+const services = [
+  {
+    label: 'Product Range',
+    desc: 'Options include various Basmati types (1121, 1401, 1509) and non-basmati varieties like Suganda, Sharpbati, and Sona Masuri, often aged for premium quality.',
+  },
+  {
+    label: 'Customization & Branding',
+    desc: 'Suppliers offer tailored packaging, including pouches, cartons, and PP/jute bags, allowing for personalized logos and branding.',
+  },
+  {
+    label: 'Quality Assurance & Compliance',
+    desc: 'Products are often certified with international standards such as BRC, ISO 22000, HACCP, and FSSAI.',
+  },
+];
+---
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@400;700&family=Montserrat:wght@400;500&display=swap"
+  rel="stylesheet"
+/>
+
+<section class="pl-section">
+
+  <!-- Title -->
+  <h2 class="pl-title">Private Label Rice Services</h2>
+
+  <!-- Rows -->
+  <div class="pl-list">
+    {services.map((s) => (
+      <div class="pl-row">
+        <!-- Label left -->
+        <div class="pl-label">{s.label}</div>
+        <!-- Dark green card right -->
+        <div class="pl-card">
+          <p class="pl-card-text">{s.desc}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+</section>
+
+<style>
+  /* ── Section ── */
+  .pl-section {
+    width: 100%;
+    background: #f9f9f7;
+    padding: 80px 0 100px;
+  }
+
+  /* ── Title ── */
+  .pl-title {
+    font-family: 'Darker Grotesque', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 60px;
+    letter-spacing: -0.01em;
+    color: #000000;
+    margin: 0 0 64px;
+    /* Figma: left offset ~68px, width 1020px */
+    max-width: 1304px;
+    padding: 0 68px;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ── List: Frame 3601 ── */
+  /* width 1304px, left 68px, gap 45px */
+  .pl-list {
+    max-width: 1304px;
+    margin: 0 auto;
+    padding: 0 68px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 45px;
+  }
+
+  /* ── Row: Group 3600/99/98 ── */
+  /* Each group is 1304px wide, label ~25% left, card 938px right starting at ~366px */
+  .pl-row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 28% 72%;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* ── Label: Darker Grotesque 400, 42px ── */
+  .pl-label {
+    font-family: 'Darker Grotesque', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: clamp(26px, 3.2vw, 42px);
+    line-height: 45px;
+    letter-spacing: -0.01em;
+    color: #000000;
+    padding-right: 24px;
+  }
+
+  /* ── Dark green card: Vector #033220 ── */
+  .pl-card {
+    background: #033220;
+    border-radius: 30px;
+    padding: 32px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 126px;
+    box-sizing: border-box;
+  }
+
+  /* ── Card text: Montserrat 500, 24px ── */
+  .pl-card-text {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: clamp(15px, 1.8vw, 24px);
+    line-height: 30px;
+    text-align: center;
+    letter-spacing: -0.01em;
+    color: #ffffff;
+    margin: 0;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 768px) {
+    .pl-section {
+      padding: 48px 0 64px;
+    }
+    .pl-title {
+      font-size: clamp(30px, 8vw, 48px);
+      line-height: 1.1;
+      padding: 0 20px;
+      margin-bottom: 40px;
+    }
+    .pl-list {
+      padding: 0 20px;
+      gap: 28px;
+    }
+    .pl-row {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .pl-label {
+      font-size: clamp(22px, 6vw, 32px);
+      line-height: 1.2;
+      padding-right: 0;
+    }
+    .pl-card {
+      padding: 24px 28px;
+      min-height: unset;
+      border-radius: 20px;
+    }
+    .pl-card-text {
+      font-size: 15px;
+      line-height: 24px;
+    }
+  }
+</style>

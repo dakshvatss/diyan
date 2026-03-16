@@ -1,109 +1,360 @@
 ---
 const products = [
   {
-    img: '/assets/1121.png',
+    img: '/assets/p1.png',
     alt: '1121 Basmati Rice',
     title: '1121 Basmati',
-    details: [
-      'Extra-long grain (most popular export variety)',
-      'High elongation',
-      'Strong aroma',
-      'Premium segment (Europe & Gulf)',
+    features: [
+      'Average grain length: 8.2–8.4 mm',
+      'One of the longest basmati grains in the world',
+      'Grains become very long after cooking',
+      'Soft, fluffy and aromatic',
     ],
-    offset: false,
+    variants: [
+      '1121 Raw',
+      '1121 Steam',
+      '1121 Sella (Parboiled)',
+      '1121 Golden Sella',
+    ],
   },
   {
-    img: '/assets/sella.png',
-    alt: 'Sella Basmati Rice',
-    title: 'Sella (Parboiled) Basmati',
-    details: [
-      'Light golden colour',
-      'Firm texture',
-      'Ideal for biryani & bulk catering',
+    img: '/assets/p2.png',
+    alt: 'Pure Basmati Rice (1509)',
+    title: 'Pure Basmati Rice (1509)',
+    features: [
+      'Grain length: 7.4–7.8 mm',
+      'Early harvest variety',
+      'High yield for farmers',
+      'Competitive export price',
     ],
-    offset: true, // 80px lower on desktop
+    variants: [],
   },
   {
-    img: '/assets/steam.png',
-    alt: 'Steam Basmati Rice',
-    title: 'Steam Basmati',
-    details: [
-      'Softer than sella',
-      'Bright white appearance',
-      'Premium retail segment',
+    img: '/assets/p3.png',
+    alt: 'Sharbati Basmati',
+    title: 'Sharbati Basmati',
+    features: [
+      'Medium grain length',
+      'Affordable basmati option',
+      'Mild aroma',
+      'Good for daily use',
     ],
-    offset: false,
+    variants: [],
+  },
+  {
+    img: '/assets/p4.png',
+    alt: 'Sugandha Basmati',
+    title: 'Sugandha Basmati',
+    features: [
+      'Medium-long grain',
+      'Pleasant aroma',
+      'Soft texture',
+      'Popular in domestic market',
+    ],
+    variants: [],
   },
 ];
 ---
 
-<section class="w-full py-24 bg-white" id="products">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@400;600;700;800&family=Poppins:wght@400;500&display=swap"
+  rel="stylesheet"
+/>
 
+<section class="products-section" id="products">
   <!-- Section label -->
-  <div class="max-w-[1440px] mx-auto px-6 md:px-16 mb-14 text-center">
-    <p class="font-inter font-medium text-[15px] tracking-[0.25em] text-primary uppercase mb-3">
-      What We Offer
-    </p>
-    <h2 class="font-montserrat font-bold text-[40px] md:text-[56px] leading-tight text-secondary">
-      Our Products
-    </h2>
+  <div class="section-label">
+    <p class="label-eyebrow">What We Offer</p>
+    <h2 class="label-heading">Our Products</h2>
   </div>
 
-  <!-- ── DESKTOP: staggered absolute layout ─────────────────────────── -->
-  <div class="hidden md:block max-w-[1440px] mx-auto px-16">
-    <div class="relative" style="height: 680px;">
+  <!-- Product rows -->
+  <div class="products-list">
+    {products.map((p, i) => (
+      <div class={`product-row ${i % 2 === 0 ? 'img-left' : 'img-right'}`} data-index={i}>
 
-      {products.map((p, i) => (
-        <div
-          class="absolute w-[418px]"
-          style={`
-            left: ${i === 0 ? "calc(15px - 2%)" : i === 1 ? "calc(471px - 2%)" : "calc(926px - 2%)"};
-            top:  ${p.offset ? '80px' : '0px'};
-          `}
-        >
-          <!-- Card image -->
-          <div class="w-full h-[346px] rounded-[20px] shadow-[4px_4px_10px_2px_rgba(128,124,124,0.25)] overflow-hidden mb-6 bg-gray-50">
-            <img src={p.img} alt={p.alt} class="w-full h-full object-cover" />
+        <!-- Image -->
+        <div class="product-image">
+          <img src={p.img} alt={p.alt} />
+        </div>
+
+        <!-- Details -->
+        <div class="product-details">
+          <div class="product-title-block">
+            <h3 class="product-title">{p.title}</h3>
+            <div class="title-divider" />
           </div>
 
-          <!-- Title -->
-          <h3 class="font-montserrat font-semibold text-[26px] leading-[1.3] text-center text-black mb-3">
-            {p.title}
-          </h3>
+          <!-- Key Features Accordion -->
+          <div class="accordion-item" data-open="true">
+            <button class="accordion-trigger" aria-expanded="true">
+              <span class="accordion-label">Key features</span>
+              <span class="accordion-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <line x1="4" y1="10" x2="16" y2="10" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                  <line class="plus-vert" x1="10" y1="4" x2="10" y2="16" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </button>
+            <div class="accordion-body">
+              <ul class="feature-list">
+                {p.features.map((f) => (
+                  <li>{f}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
 
-          <!-- Details -->
-          <ul class="space-y-1">
-            {p.details.map((d) => (
-              <li class="font-montserrat text-[17px] leading-[28px] text-center text-dark">
-                {d}
-              </li>
-            ))}
-          </ul>
+          <!-- Variants Accordion (only if variants exist) -->
+          {p.variants.length > 0 && (
+            <div class="accordion-item" data-open="true">
+              <button class="accordion-trigger" aria-expanded="true">
+                <span class="accordion-label">Variants</span>
+                <span class="accordion-icon">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <line x1="4" y1="10" x2="16" y2="10" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                    <line class="plus-vert" x1="10" y1="4" x2="10" y2="16" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="accordion-body">
+                <ul class="feature-list">
+                  {p.variants.map((v) => (
+                    <li>{v}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
         </div>
-      ))}
 
-    </div>
-  </div>
-
-  <!-- ── MOBILE: single-column stack ──────────────────────────────── -->
-  <div class="md:hidden max-w-[1440px] mx-auto px-6 flex flex-col gap-12">
-    {products.map((p) => (
-      <div>
-        <div class="w-full h-[260px] rounded-[20px] shadow-[4px_4px_10px_2px_rgba(128,124,124,0.25)] overflow-hidden mb-5 bg-gray-50">
-          <img src={p.img} alt={p.alt} class="w-full h-full object-cover" />
-        </div>
-        <h3 class="font-montserrat font-semibold text-[22px] leading-snug text-center text-black mb-3">
-          {p.title}
-        </h3>
-        <ul class="space-y-1">
-          {p.details.map((d) => (
-            <li class="font-montserrat text-[16px] leading-[28px] text-center text-dark">
-              {d}
-            </li>
-          ))}
-        </ul>
       </div>
     ))}
   </div>
-
 </section>
+
+<style>
+  /* ── Fonts ── */
+  .products-section {
+    font-family: 'Poppins', sans-serif;
+    background: #fff;
+    padding: 80px 0 100px;
+    width: 100%;
+  }
+
+  /* ── Section label ── */
+  .section-label {
+    max-width: 1200px;
+    margin: 0 auto 64px;
+    padding: 0 40px;
+    text-align: center;
+  }
+  .label-eyebrow {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #1a6b3c;
+    margin: 0 0 10px;
+  }
+  .label-heading {
+    font-family: 'Darker Grotesque', sans-serif;
+    font-weight: 800;
+    font-size: clamp(36px, 5vw, 56px);
+    color: #1d2939;
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  /* ── Product list ── */
+  .products-list {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+  }
+
+  /* ── Product row ── */
+  .product-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  /* Alternate: even rows → image left; odd rows → image right */
+  .product-row.img-right .product-image { order: 2; }
+  .product-row.img-right .product-details { order: 1; }
+
+  /* ── Product image ── */
+  .product-image {
+    width: 100%;
+    aspect-ratio: 573 / 480;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #f4f0eb;
+  }
+  .product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ── Product details ── */
+  .product-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* ── Title block ── */
+  .product-title-block {
+    margin-bottom: 32px;
+  }
+  .product-title {
+    font-family: 'Darker Grotesque', sans-serif;
+    font-weight: 700;
+    font-size: clamp(28px, 3vw, 40px);
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: #1d2939;
+    margin: 0 0 20px;
+  }
+  .title-divider {
+    width: 100%;
+    height: 1px;
+    background: #d0d5dd;
+  }
+
+  /* ── Accordion ── */
+  .accordion-item {
+    border-bottom: 1.5px solid #eaecf0;
+  }
+
+  .accordion-trigger {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    gap: 12px;
+  }
+  .accordion-trigger:hover .accordion-icon {
+    opacity: 0.85;
+  }
+
+  .accordion-label {
+    font-family: 'Darker Grotesque', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 28px;
+    color: #1d2939;
+  }
+
+  .accordion-icon {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #1a432e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+
+  /* When open: hide the vertical line (show minus) */
+  .accordion-item[data-open="true"] .accordion-icon { background: #1a432e; }
+  .accordion-item[data-open="false"] .accordion-icon { background: #033220; }
+  .accordion-item[data-open="true"] .plus-vert { display: none; }
+  .accordion-item[data-open="false"] .plus-vert { display: block; }
+
+  /* ── Accordion body ── */
+  .accordion-body {
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    max-height: 400px;
+    opacity: 1;
+  }
+  .accordion-item[data-open="false"] .accordion-body {
+    max-height: 0;
+    opacity: 0;
+  }
+
+  /* ── Feature list ── */
+  .feature-list {
+    list-style: none;
+    padding: 0 0 22px 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .feature-list li {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    line-height: 26px;
+    color: #000;
+    padding-left: 18px;
+    position: relative;
+  }
+  .feature-list li::before {
+    content: '•';
+    position: absolute;
+    left: 4px;
+    color: #1a432e;
+    font-size: 14px;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 768px) {
+    .products-section {
+      padding: 48px 0 64px;
+    }
+    .section-label {
+      padding: 0 20px;
+      margin-bottom: 40px;
+    }
+    .products-list {
+      padding: 0 20px;
+      gap: 56px;
+    }
+    .product-row {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    /* On mobile, always image on top */
+    .product-row.img-right .product-image { order: 0; }
+    .product-row.img-right .product-details { order: 1; }
+    .product-image {
+      aspect-ratio: 16 / 10;
+    }
+    .accordion-label {
+      font-size: 18px;
+    }
+    .feature-list li {
+      font-size: 14px;
+    }
+  }
+</style>
+
+<script>
+  // Accordion toggle
+  document.querySelectorAll('.accordion-trigger').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.accordion-item');
+      const isOpen = item.getAttribute('data-open') === 'true';
+      item.setAttribute('data-open', isOpen ? 'false' : 'true');
+      btn.setAttribute('aria-expanded', String(!isOpen));
+    });
+  });
+</script>

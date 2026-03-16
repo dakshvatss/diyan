@@ -1,121 +1,147 @@
 ---
 const packages = [
-  // 25% of card width (224px) = 56px pushed right via translateX
-  { img: '/assets/rice_0.png', alt: 'Diyan Sella Basmati — Purple pack', offset: 'translate-x-[56px]' },
-  { img: '/assets/rice_1.png', alt: 'Diyan Sella Basmati — Blue pack',   offset: '' },
-  { img: '/assets/rice_2.png', alt: 'Diyan Sella Basmati — Red pack',    offset: '' },
+  { id: 0, img: '/assets/rice_0.png', alt: 'Diyan 1121 Premium Indian Basmati Rice — Yellow pack', bg: 'bg-white' },
+  { id: 1, img: '/assets/rice_1.png', alt: 'Diyan 1121 Premium Indian Basmati Rice — Green pack',  bg: 'bg-white' },
+  { id: 2, img: '/assets/rice_2.png', alt: 'Diyan 1121 Premium Indian Basmati Rice — Cream pack',  bg: 'bg-[#E5E0D8]' },
+  { id: 3, img: '/assets/rice_3.png', alt: 'Diyan 1121 Premium Indian Basmati Rice — Blue pack',   bg: 'bg-white' },
 ];
 ---
 
-<!-- ── DESKTOP layout ─────────────────────────────────────────────── -->
-<section class="hidden md:block w-full bg-white" style="padding-top: 80px; padding-bottom: 560px;">
-  <div class="max-w-[1440px] mx-auto px-16">
+<section class="w-full bg-white font-montserrat overflow-hidden" style="padding-top: 80px; padding-bottom: 200px;">
+  <div class="max-w-[1440px] mx-auto px-6 md:px-16">
 
     <!-- Section heading -->
-    <h2 class="font-darker font-extrabold text-[84px] leading-[1] text-black mb-10 pl-[73px]">
-      <br />Types of Bags
+    <h2 class="font-darker font-extrabold text-[48px] md:text-[84px] leading-[1] text-black mb-10 md:mb-20 md:pl-[73px] -translate-y-21">
+      Types of Bags
     </h2>
 
-    <!--
-      Outer wrapper: position:relative so the floating product image
-      can break out above the green box without affecting page flow.
-      We add top padding equal to the upward protrusion (≈290px)
-      so the section doesn't overlap the section above.
-    -->
-    <div class="relative" style="margin-top: 290px;">
-
-      <!-- Green rounded box -->
-      <div class="relative w-[1308px] mx-auto h-[425px] bg-primary rounded-[55px] overflow-visible">
-
-        <!-- "About the product" label (top-left of green box) -->
-        <div class="absolute left-[126px] top-[49px]">
-          <p class="font-montserrat font-bold text-[36px] leading-[52px] text-white">
-            About the<br />product
-          </p>
+    <div class="relative mt-24 md:mt-64 product-showcase-container">
+      
+      <!-- DESKTOP: Dark Green Container -->
+      <div class="hidden md:flex relative w-[1308px] mx-auto h-[380px] bg-secondary rounded-[40px] items-center px-24">
+        
+        <!-- Navigation Arrows -->
+        <div class="flex gap-10">
+          <button id="prev-btn" class="w-[64px] h-[64px] rounded-full border-2 border-white flex items-center justify-center text-white hover:bg-white/10 transition-colors">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <button id="next-btn" class="w-[64px] h-[64px] rounded-full border-2 border-white flex items-center justify-center text-white hover:bg-white/10 transition-colors">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
         </div>
 
-        <!--
-          Hero product image — floats ABOVE the green box.
-          Positioned relative to the green box:
-            left: 656px  (from left edge of green box)
-            bottom: top of box + 290px extra headroom → use top: calc(-829px + 425px) ?
-          Actually we position from bottom of the box's top edge:
-          The image is 829px tall, box is 425px tall.
-          We want the bottom of the image ~80px above the bottom of the box,
-          so top = -(829 - 425 + 80) = -484px from top of box.
-          Figma says top: 6047px for image vs 6586px for box → delta = -539px
-        -->
-        <div
-          class="absolute z-20 w-[501px] h-[829px] pointer-events-none"
-          style="left: 703px; top: -539px;"
-        >
+        <!-- Large Featured Bag Image wrapper -->
+        <div class="absolute z-20 w-[450px] h-[750px] pointer-events-none" style="right: 120px; top: -380px;">
           <img
-            src="/assets/rice_0.png"
-            alt="Diyan Sella Basmati Rice"
-            class="w-full h-full object-contain drop-shadow-2xl"
+            id="featured-image"
+            src={packages[0].img}
+            alt={packages[0].alt}
+            class="w-full h-full object-contain drop-shadow-2xl transition-all duration-500"
           />
         </div>
+      </div>
 
-        <!-- Three small package cards (bottom-left of green box) -->
-        <div class="absolute bottom-[20px] left-[126px] flex gap-6 items-end">
-          {packages.map((pkg) => (
-            <div
-              class={`
-                w-[224px] h-[271px] bg-white rounded-[18px]
-                shadow-[0px_4px_10px_4px_rgba(104,104,104,0.25)]
-                p-3 flex items-center justify-center
-                ${pkg.offset}
-              `}
-            >
-              <img src={pkg.img} alt={pkg.alt} class="h-[226px] object-contain" />
-            </div>
-          ))}
+      <!-- MOBILE: Dark Green Card -->
+      <div class="md:hidden bg-secondary rounded-[30px] p-8 mb-10 relative">
+        <div class="flex justify-center mb-8 h-[350px]">
+          <img
+            id="featured-image-mobile"
+            src={packages[0].img}
+            alt={packages[0].alt}
+            class="h-full object-contain drop-shadow-xl transition-all duration-500"
+          />
         </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── MOBILE layout ──────────────────────────────────────────────── -->
-<section class="md:hidden w-full bg-white py-16 px-6">
-  <div class="max-w-[600px] mx-auto">
-
-    <h2 class="font-darker font-extrabold text-[48px] leading-tight text-black mb-10">
-      Our<br />Products
-    </h2>
-
-    <!-- Green card -->
-    <div class="bg-primary rounded-[30px] p-8">
-      <p class="font-montserrat font-bold text-[26px] leading-[1.4] text-white mb-8">
-        About the product
-      </p>
-
-      <!-- Hero image centred -->
-      <div class="flex justify-center mb-8">
-        <img
-          src="/assets/rice_0.png"
-          alt="Diyan Sella Basmati Rice"
-          class="h-[300px] object-contain drop-shadow-xl"
-        />
+        
+        <div class="flex justify-center gap-6">
+          <button id="prev-btn-mobile" class="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center text-white">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <button id="next-btn-mobile" class="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center text-white">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
       </div>
 
-      <!-- Package thumbnails -->
-      <div class="grid grid-cols-3 gap-3">
+      <!-- Thumbnails Grid (Visible on both) -->
+      <div id="thumbnails-container" class="grid grid-cols-2 md:flex md:justify-center gap-4 md:gap-14 mt-10 md:mt-24">
         {packages.map((pkg) => (
           <div
-            class="
-              bg-white rounded-[14px]
-              shadow-[0px_4px_10px_2px_rgba(104,104,104,0.25)]
-              p-2 flex items-center justify-center
-              aspect-square
-            "
+            data-id={pkg.id}
+            class={`
+              thumbnail-card
+              w-full md:w-[406px] h-auto aspect-[4/5] md:h-[491px] ${pkg.bg} rounded-[25px] md:rounded-[30px]
+              shadow-[0px_4px_15px_rgba(0,0,0,0.08)] md:shadow-[0px_10px_40px_rgba(0,0,0,0.1)]
+              p-4 md:p-12 flex items-center justify-center
+              hover:shadow-2xl transition-all duration-300 cursor-pointer
+              ${pkg.id === 0 ? 'hidden' : 'block'}
+            `}
           >
-            <img src={pkg.img} alt={pkg.alt} class="h-full object-contain" />
+            <img src={pkg.img} alt={pkg.alt} class="h-full object-contain pointer-events-none" />
           </div>
         ))}
       </div>
     </div>
-
   </div>
 </section>
+
+<script define:vars={{ packages }}>
+  let currentIndex = 0;
+  
+  const featuredImg = document.getElementById('featured-image');
+  const featuredImgMobile = document.getElementById('featured-image-mobile');
+  const thumbnails = document.querySelectorAll('.thumbnail-card');
+  const prevBtns = [document.getElementById('prev-btn'), document.getElementById('prev-btn-mobile')];
+  const nextBtns = [document.getElementById('next-btn'), document.getElementById('next-btn-mobile')];
+
+  function updateGallery(index) {
+    currentIndex = index;
+    const currentPkg = packages[currentIndex];
+
+    // Update images with fade effect
+    [featuredImg, featuredImgMobile].forEach(img => {
+      if (!img) return;
+      img.style.opacity = '0';
+      img.style.transform = 'translateY(20px)';
+      
+      setTimeout(() => {
+        img.src = currentPkg.img;
+        img.alt = currentPkg.alt;
+        img.style.opacity = '1';
+        img.style.transform = 'translateY(0)';
+      }, 150);
+    });
+
+    // Update thumbnails: hide the selected one
+    thumbnails.forEach(thumb => {
+      const id = parseInt(thumb.getAttribute('data-id'));
+      if (id === currentIndex) {
+        thumb.classList.add('hidden');
+        thumb.classList.remove('block');
+      } else {
+        thumb.classList.remove('hidden');
+        thumb.classList.add('block');
+      }
+    });
+  }
+
+  thumbnails.forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      const id = parseInt(thumb.getAttribute('data-id'));
+      updateGallery(id);
+    });
+  });
+
+  prevBtns.forEach(btn => {
+    btn?.addEventListener('click', () => {
+      const nextIndex = (currentIndex - 1 + packages.length) % packages.length;
+      updateGallery(nextIndex);
+    });
+  });
+
+  nextBtns.forEach(btn => {
+    btn?.addEventListener('click', () => {
+      const nextIndex = (currentIndex + 1) % packages.length;
+      updateGallery(nextIndex);
+    });
+  });
+</script>

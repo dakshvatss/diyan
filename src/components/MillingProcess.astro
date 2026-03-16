@@ -1,0 +1,167 @@
+---
+const steps = [
+  {
+    label: 'Cleaning',
+    desc: 'Raw paddy is cleaned to remove dust, stones, and impurities.',
+  },
+  {
+    label: 'De-husking (Husking)',
+    desc: 'A machine removes the hard husk, producing brown rice.',
+  },
+  {
+    label: 'Paddy Separation',
+    desc: 'Unhusked grains are separated from brown rice and sent back for reprocessing.',
+  },
+  {
+    label: 'Whitening / Polishing',
+    desc: 'The bran layer is removed from the brown rice to create white rice, which is then polished for a better appearance.',
+  },
+  {
+    label: 'Grading & Sorting',
+    desc: 'Broken grains are separated, and color sorters remove discolored grains to ensure quality.',
+  },
+];
+---
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@400;600;700;800&family=Poppins:wght@400;500&display=swap"
+  rel="stylesheet"
+/>
+
+<section class="milling-section">
+
+  <!-- Title -->
+  <h2 class="milling-title">Rice Milling Process</h2>
+
+  <!-- Process diagram image -->
+  <div class="process-image-wrap">
+    <img src="/assets/process.png" alt="Rice Milling Process Diagram" class="process-img" />
+  </div>
+
+  <!-- Description cards -->
+  <div class="steps-list">
+    {steps.map((s) => (
+      <div class="step-card">
+        <p class="step-text">
+          <span class="step-label">{s.label}:</span> {s.desc}
+        </p>
+      </div>
+    ))}
+  </div>
+
+</section>
+<img src="/assets/farmers.png" alt="farmers Diagram">
+
+<style>
+  /* ── Section (Vector bg) ── */
+  .milling-section {
+    width: 100%;
+    background: #F7ECDC;
+    padding: 80px 0 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ── Title — Rice Milling Process ── */
+  .milling-title {
+    font-family: 'Darker Grotesque', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 60px; /* 94% */
+    text-align: center;
+    letter-spacing: -0.01em;
+    color: #000000;
+    width: 779px;
+    max-width: calc(100% - 48px);
+    margin: 0 auto 56px;
+    padding: 0;
+  }
+
+  /* ── Group 3594: process diagram container ── */
+  /* Figma: width 1198px, left 125px — translated to max-width + auto margins */
+  .process-image-wrap {
+    width: 100%;
+    max-width: 1198px;
+    padding: 0 125px; /* mirrors left:125px gutter on each side */
+    margin-bottom: 56px;
+    box-sizing: border-box;
+  }
+  .process-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* ── Frame 3595: steps list ── */
+  /* Figma: width 1170px, left 135px, gap 16px */
+  .steps-list {
+    width: 100%;
+    max-width: 1170px;
+    padding: 0 135px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    isolation: isolate;
+  }
+
+  /* ── Step card ── */
+  .step-card {
+    width: 100%;
+    background: #ffffff;
+    border: none;
+    border-radius: 20px;
+    padding: 28px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .step-text {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #1d2939;
+    margin: 0;
+    text-align: center;
+    width: 100%;
+  }
+  .step-label {
+    font-weight: 600;
+    color: #1d2939;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 900px) {
+    .milling-section {
+      padding: 48px 0 64px;
+    }
+    .milling-title {
+      font-size: clamp(32px, 8vw, 64px);
+      line-height: 1.05;
+      margin-bottom: 36px;
+    }
+    .process-image-wrap {
+      padding: 0 20px;
+      margin-bottom: 36px;
+    }
+    .steps-list {
+      padding: 0 20px;
+    }
+    .step-card {
+      padding: 20px 24px;
+      border-radius: 16px;
+    }
+    .step-text {
+      font-size: 14px;
+      text-align: left;
+    }
+  }
+</style>
