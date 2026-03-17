@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import Products from '../components/Products.astro';
+import ProductsComponent from '../components/Products.astro';
 import MillingProcess from '../components/MillingProcess.astro';
 import PrivateLabel from '../components/PrivateLabel.astro';
 
@@ -13,7 +13,7 @@ import PrivateLabel from '../components/PrivateLabel.astro';
   description="Explore our range of premium rice products."
 >
   <Header />
-  <img src="public/assets/woodrice.png" alt="woodrice" />
+  <img src="/assets/woodrice.png" alt="woodrice" />
 
   <!-- Green Stat Section: Indian Basmati is globally recognized for (copied from index.html) -->
   <section class="w-full bg-primary py-16 md:py-0 md:h-[473px] flex items-center">
@@ -59,7 +59,7 @@ import PrivateLabel from '../components/PrivateLabel.astro';
       </div>
     </div>
   </section>
-  <Products />
+  <ProductsComponent />
   <MillingProcess />
   <PrivateLabel />
   <Footer />
