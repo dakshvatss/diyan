@@ -51,6 +51,9 @@ const steps = [
     ))}
   </div>
 
+  <!-- Farmers Overlap Image -->
+  <img src="/assets/farmers.png" alt="Farmers working in rice field" class="farmers-full-image" />
+
 </section>
 
 <style>
@@ -58,10 +61,13 @@ const steps = [
   .milling-section {
     width: 100%;
     background: #F7ECDC;
-    padding: 52px 0 52px;
+    padding: 52px 0 0; /* Removed bottom padding here, moved to the image container */
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    /* Reduced margin to eliminate gap with the hanging image */
+    margin-bottom: clamp(60px, 10vw, 150px); 
   }
 
   /* ── Title — Rice Milling Process ── */
@@ -138,10 +144,23 @@ const steps = [
     color: #1d2939;
   }
 
+  /* ── Farmers Overlap (Full Width) ── */
+  .farmers-full-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    z-index: 20;
+    margin-top: 60px;
+    transform: translateY(20%) scaleX(-1);
+    /* This pushes the beige background "up" by 35px relative to the image */
+    margin-bottom: -180px;
+  }
+
   /* ── Mobile ── */
   @media (max-width: 900px) {
     .milling-section {
-      padding: 36px 0 40px;
+      padding: 36px 0 0;
+      /* margin-bottom handled by clamp above or specific override if needed */
     }
     .milling-title {
       font-size: clamp(28px, 8vw, 48px);
@@ -173,6 +192,9 @@ const steps = [
     .step-text {
       font-size: 15px;
       text-align: left;
+    }
+    .farmers-full-image {
+      margin-top: 20px;
     }
   }
 </style>
