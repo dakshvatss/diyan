@@ -1,43 +1,9 @@
 ---
 const features = [
-  {
-    label: 'Extra-long slender grains',
-    icon: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Elongated grain shape -->
-      <ellipse cx="32" cy="32" rx="10" ry="28" fill="white" opacity="0.9"/>
-      <ellipse cx="32" cy="16" rx="6" ry="12" fill="white"/>
-      <ellipse cx="32" cy="48" rx="6" ry="12" fill="white"/>
-      <line x1="14" y1="32" x2="50" y2="32" stroke="white" stroke-width="2.5" stroke-dasharray="4 3"/>
-    </svg>`,
-  },
-  {
-    label: 'Distinct natural aroma',
-    icon: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Aroma / steam waves -->
-      <path d="M20 44 Q20 36 28 32 Q36 28 36 20" stroke="white" stroke-width="3" stroke-linecap="round" fill="none"/>
-      <path d="M32 48 Q32 38 40 34 Q48 30 48 20" stroke="white" stroke-width="3" stroke-linecap="round" fill="none"/>
-      <path d="M8 46 Q8 38 16 33 Q24 28 24 18" stroke="white" stroke-width="3" stroke-linecap="round" fill="none"/>
-    </svg>`,
-  },
-  {
-    label: 'Non-sticky, separate grains',
-    icon: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Three separated grain ovals -->
-      <ellipse cx="16" cy="32" rx="8" ry="18" fill="white" opacity="0.9"/>
-      <ellipse cx="32" cy="32" rx="8" ry="18" fill="white"/>
-      <ellipse cx="48" cy="32" rx="8" ry="18" fill="white" opacity="0.9"/>
-    </svg>`,
-  },
-  {
-    label: 'Soft, fluffy texture after cooking',
-    icon: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Bowl with steam -->
-      <path d="M12 36 Q12 52 32 52 Q52 52 52 36 L12 36Z" fill="white" opacity="0.9"/>
-      <rect x="8" y="34" width="48" height="4" rx="2" fill="white"/>
-      <path d="M24 28 Q24 22 28 20 Q32 18 32 12" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-      <path d="M32 28 Q32 22 36 20 Q40 18 40 12" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-    </svg>`,
-  },
+  { label: 'Extra-long slender grains', icon: '/assets/icon1.png' },
+  { label: 'Distinct natural aroma', icon: '/assets/icon2.png' },
+  { label: 'Non-sticky, separate grains', icon: '/assets/icon3.png' },
+  { label: 'Soft, fluffy texture after cooking', icon: '/assets/icon4.png' },
 ];
 ---
 
@@ -53,7 +19,9 @@ const features = [
     <div class="grid grid-cols-2 md:flex md:flex-row md:justify-center md:items-start gap-8 md:gap-[84px]">
       {features.map((f) => (
         <div class="flex flex-col items-center gap-2 md:w-[215px]">
-          <div class="w-[55px] h-[55px] mb-2 md:mb-4" set:html={f.icon} />
+          <div class="w-[55px] h-[55px] mb-2 md:mb-4 flex items-center justify-center">
+            <img src={f.icon} alt={f.label} class="w-full h-full object-contain" />
+          </div>
           <p class="font-montserrat font-semibold text-[16px] md:text-[22px] leading-snug md:leading-[36px] text-center text-white">
             {f.label}
           </p>
