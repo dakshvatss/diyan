@@ -4,13 +4,15 @@
 <header class="absolute top-0 w-full bg-white shadow-sm z-50">
   <nav class="max-w-[1440px] mx-auto px-6 md:px-16 py-8 md:py-10 flex items-center">
 
-    <!-- Logo — bigger, left-anchored -->
-      <a href="/" class="w-[100px] md:w-[130px] shrink-0" style="transform: translateY(20%);">
-        <!-- keep small logo for mobile; hide on md+ to avoid duplication with floating hero logo -->
-        <img src="/assets/logo.png" alt="Diyan Rice Mill Industry" class="w-full md:hidden" />
-      </a>
+    <!-- Logo — circular beige container on mobile, absolute large logo on desktop -->
+    <a href="/" class="relative z-[10000] w-[100px] md:w-[130px] shrink-0" style="transform: translateY(20%);">
+      <!-- Mobile circular beige container -->
+      <div class="md:hidden absolute -top-8 -left-4 w-[160px] h-[160px] bg-beige rounded-full flex items-center justify-center shadow-md">
+        <img src="/assets/logo.png" alt="Diyan Rice Mill Industry" class="w-[120px]" />
+      </div>
+    </a>
 
-    <!-- Floating logo overlay (moved from Hero.astro to be consistent on all pages) -->
+    <!-- Floating logo overlay (Desktop only) -->
     <div class="hidden md:block absolute left-[61px] -top-[52px] md:left-[80px] md:-top-[60px] w-[288px] h-[288px] z-[9999] pointer-events-none" style="transform: translateY(27%);">
       <img src="/assets/logo.png" alt="Diyan Rice Mill Industry" class="w-full h-full object-contain drop-shadow-2xl" />
     </div>
