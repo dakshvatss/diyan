@@ -15,7 +15,10 @@ import StatBanner from '../components/StatBanner.astro';
 >
   <Header />
    <div class="pt-[104px] md:pt-[120px]">
-  <img src="/assets/woodrice.png" alt="woodrice" class="w-full h-auto block" />
+  <picture>
+    <source media="(max-width: 768px)" srcset="/assets/woodricemobile.png">
+    <img src="/assets/woodrice.png" alt="woodrice" class="w-full h-auto block" />
+  </picture>
 </div>
 
   <!-- Green Stat Section: Indian Basmati is globally recognized for (copied from index.html) -->
